@@ -1,8 +1,21 @@
 # SisGESC – Sistema de Gestão Escolar
 
+## Integrante:
+
+- [Ramon Oliveira](https://github.com/Rmonn25)
+- [Gustavo Vaz](https://github.com/Gustavo-Vaz-Gasparoto)
+- [Igor Sant'ana](https://github.com/IgorMedeiros-cpu)
+- [Douglas Leal](https://github.com/douglaslealgzs)
+- [Gabriel Luiz](https://github.com/GabrielBorges1234)
+- [Vitor Santana](https://github.com/vitorsfz)
+- [Luigi Borges](https://github.com/Luigi-Loc)
+- [Miguel Alves](https://github.com/Miguel-Lima26)
+- [Edson Murilo](https://github.com/Muriloss21)
+- [Daniel Perederko](https://github.com/perederko90000)
+
 ## Sobre o projeto
 
-O **SisGESC** é um projeto acadêmico que está em desenvolvimento na faculdade na materia de Banco de dados com eu e mais 9 alunos, com o objetivo de projetar e estruturar um **Sistema de Gestão Escolar** voltado para o armazenamento, organização e análise de dados de uma **escola pública de bairro do ensino fundamental**.
+O **SisGESC** é um projeto acadêmico que está em desenvolvimento na faculdade na materia de Banco de dados com 10 alunos, com o objetivo de projetar e estruturar um **Sistema de Gestão Escolar** voltado para o armazenamento, organização e análise de dados de uma **escola pública de bairro do ensino fundamental**.
 
 A proposta do sistema é centralizar informações escolares, acadêmicas, administrativas e financeiras em um banco de dados estruturado, permitindo não apenas o suporte às operações do dia a dia da escola, mas também preparando a base para futuras aplicações em **Business Intelligence (BI)** e **Inteligência Artificial (IA)**.
 
