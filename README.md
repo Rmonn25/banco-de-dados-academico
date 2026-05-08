@@ -19,6 +19,10 @@ O **SisGESC** é um projeto acadêmico desenvolvido na disciplina de **Banco de 
 
 A proposta do sistema é centralizar informações escolares, acadêmicas, administrativas e financeiras em um banco de dados estruturado, oferecendo suporte às operações do dia a dia da instituição e, ao mesmo tempo, preparando a base para futuras aplicações em **Business Intelligence (BI)** e **Inteligência Artificial (IA)**.
 
+Link do diagrama: [Diagrama - SisGESC](https://dbdiagram.io/d/Banco-academico-69e236f7a5db712fe57b3376)
+
+![Modelagem do Banco Acadêmico](modelagem/Banco%20academico.png)
+
 ## Contexto do trabalho
 
 Este trabalho tem como foco principal a construção da base de dados do sistema, considerando não apenas o uso transacional, mas também seu potencial analítico e preditivo no futuro.
