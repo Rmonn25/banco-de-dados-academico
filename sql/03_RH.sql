@@ -12,9 +12,9 @@ CREATE TABLE rh.tb_cargos (
         PRIMARY KEY (pk_nome_cargo),
 
     CONSTRAINT CK_tb_cargos_status_cargo
-        CHECK (status_cargo IN ('ativo', 'inativo'))
+        CHECK (status_cargo IN ('Ativo', 'Inativo'))
 );
-GO
+
 
 CREATE TABLE rh.tb_departamentos (
     pk_nome_departamento VARCHAR(50) NOT NULL,
@@ -24,9 +24,9 @@ CREATE TABLE rh.tb_departamentos (
         PRIMARY KEY (pk_nome_departamento),
 
     CONSTRAINT CK_tb_departamentos_status_departamento
-        CHECK (status_departamento IN ('ativo', 'inativo'))
+        CHECK (status_departamento IN ('Ativo', 'Inativo'))
 );
-GO
+
 
 CREATE TABLE rh.tb_funcionario (
     pk_cpf CHAR(11) NOT NULL,
@@ -49,51 +49,54 @@ CREATE TABLE rh.tb_funcionario (
         REFERENCES rh.tb_cargos (pk_nome_cargo),
 
     CONSTRAINT CK_tb_funcionario_status_funcionario
-        CHECK (status_funcionario IN ('ativo', 'inativo', 'afastado'))
+        CHECK (status_funcionario IN ('Ativo', 'Inativo', 'Afastado'))
 );
-GO
+
 
 CREATE TABLE rh.tb_professor (
     pk_cpf CHAR(11) NOT NULL,
     registro_docente VARCHAR(50) NULL,
     especialidade VARCHAR(100) NULL,
-    ativo BIT NOT NULL
-        CONSTRAINT DF_tb_professor_ativo DEFAULT 1,
+    ativo VARCHAR(10) NOT NULL DEFAULT 'Ativo',
 
     CONSTRAINT PK_tb_professor
         PRIMARY KEY (pk_cpf),
 
     CONSTRAINT FK_tb_professor_tb_funcionario
         FOREIGN KEY (pk_cpf)
-        REFERENCES rh.tb_funcionario (pk_cpf)
+        REFERENCES rh.tb_funcionario (pk_cpf),
+
+    CONSTRAINT CK_tb_professor_ativo
+        CHECK (ativo IN ('Ativo', 'Inativo'))
 );
-GO
+
 
 CREATE TABLE rh.tb_coordenacao (
     pk_cpf CHAR(11) NOT NULL,
     area_responsavel VARCHAR(100) NULL,
-    ativo BIT NOT NULL
-        CONSTRAINT DF_tb_coordenacao_ativo DEFAULT 1,
+    ativo VARCHAR(10) NOT NULL DEFAULT 'Ativo',
 
     CONSTRAINT PK_tb_coordenacao
         PRIMARY KEY (pk_cpf),
 
     CONSTRAINT FK_tb_coordenacao_tb_funcionario
         FOREIGN KEY (pk_cpf)
-        REFERENCES rh.tb_funcionario (pk_cpf)
+        REFERENCES rh.tb_funcionario (pk_cpf),
+
+    CONSTRAINT CK_tb_coordenacao_ativo
+        CHECK (ativo IN ('Ativo', 'Inativo'))
 );
-GO
+
 
 CREATE TABLE rh.tb_lotacao_funcionario (
-    pk_lotacao INT NOT NULL IDENTITY(1,1),
+    pk_lotacao INT NOT NULL AUTO_INCREMENT,
     fk_cpf CHAR(11) NOT NULL,
     fk_nome_departamento VARCHAR(50) NOT NULL,
     data_inicio DATE NOT NULL,
-    data_fim DATE NULL,
-    lotacao_principal BIT NOT NULL
-        CONSTRAINT DF_tb_lotacao_funcionario_lotacao_principal DEFAULT 1,
+    data_fim DATE,
+    lotacao_principal BOOLEAN NOT NULL DEFAULT 1,
     data_cadastro DATETIME NOT NULL,
-    data_atualizacao DATETIME NULL,
+    data_atualizacao DATETIME,
 
     CONSTRAINT PK_tb_lotacao_funcionario
         PRIMARY KEY (pk_lotacao),
@@ -106,16 +109,16 @@ CREATE TABLE rh.tb_lotacao_funcionario (
         FOREIGN KEY (fk_nome_departamento)
         REFERENCES rh.tb_departamentos (pk_nome_departamento)
 );
-GO
+
 
 CREATE TABLE rh.tb_folha_pagamento (
     pk_cpf CHAR(11) NOT NULL,
     pk_competencia CHAR(7) NOT NULL,
-    salario_base DECIMAL(10,2) NULL,
-    descontos DECIMAL(10,2) NULL,
-    beneficios DECIMAL(10,2) NULL,
+    salario_base DECIMAL(10,2),
+    descontos DECIMAL(10,2),
+    beneficios DECIMAL(10,2),
     data_cadastro DATETIME NOT NULL,
-    data_atualizacao DATETIME NULL,
+    data_atualizacao DATETIME,
 
     CONSTRAINT PK_tb_folha_pagamento
         PRIMARY KEY (pk_cpf, pk_competencia),
@@ -124,19 +127,19 @@ CREATE TABLE rh.tb_folha_pagamento (
         FOREIGN KEY (pk_cpf)
         REFERENCES rh.tb_funcionario (pk_cpf)
 );
-GO
+
 
 CREATE TABLE rh.tb_folha_ponto (
     pk_cpf CHAR(11) NOT NULL,
     pk_data_referencia DATE NOT NULL,
-    hora_entrada TIME NULL,
+    hora_entrada TIME,
     hora_inicio_intervalo TIME NOT NULL,
     hora_fim_intervalo TIME NOT NULL,
     hora_saida TIME NULL,
-    hora_extra DECIMAL(5,2) NULL,
-    atrasos DECIMAL(5,2) NULL,
+    hora_extra DECIMAL(5,2),
+    atrasos DECIMAL(5,2),
     data_cadastro DATETIME NOT NULL,
-    data_atualizacao DATETIME NULL,
+    data_atualizacao DATETIME,
 
     CONSTRAINT PK_tb_folha_ponto
         PRIMARY KEY (pk_cpf, pk_data_referencia),
@@ -145,14 +148,14 @@ CREATE TABLE rh.tb_folha_ponto (
         FOREIGN KEY (pk_cpf)
         REFERENCES rh.tb_funcionario (pk_cpf)
 );
-GO
+
 
 CREATE TABLE rh.tb_ferias (
     pk_cpf CHAR(11) NOT NULL,
     pk_data_inicio DATE NOT NULL,
     data_fim DATE NOT NULL,
     data_cadastro DATETIME NOT NULL,
-    data_atualizacao DATETIME NULL,
+    data_atualizacao DATETIME,
 
     CONSTRAINT PK_tb_ferias
         PRIMARY KEY (pk_cpf, pk_data_inicio),
@@ -161,4 +164,3 @@ CREATE TABLE rh.tb_ferias (
         FOREIGN KEY (pk_cpf)
         REFERENCES rh.tb_funcionario (pk_cpf)
 );
-GO

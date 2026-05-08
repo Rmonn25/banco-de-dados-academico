@@ -13,12 +13,12 @@ CREATE TABLE financeiro.tb_fontes_recurso (
         PRIMARY KEY (pk_nome_fonte),
 
     CONSTRAINT CK_tb_fontes_recurso_tipo_recurso
-        CHECK (tipo_recurso IN ('municipal', 'estadual', 'federal', 'projeto', 'doacao', 'outro')),
+        CHECK (tipo_recurso IN ('Municipal', 'Estadual', 'Federal', 'Projeto', 'Doacao', 'Outro')),
 
     CONSTRAINT CK_tb_fontes_recurso_status_fonte
-        CHECK (status_fonte IN ('ativo', 'inativo'))
+        CHECK (status_fonte IN ('Ativo', 'Inativo'))
 );
-GO
+
 
 CREATE TABLE financeiro.tb_categorias_despesa (
     pk_nome_categoria VARCHAR(100) NOT NULL,
@@ -29,9 +29,9 @@ CREATE TABLE financeiro.tb_categorias_despesa (
         PRIMARY KEY (pk_nome_categoria),
 
     CONSTRAINT CK_tb_categorias_despesa_status_categoria
-        CHECK (status_categoria IN ('ativo', 'inativo'))
+        CHECK (status_categoria IN ('Ativo', 'Inativo'))
 );
-GO
+
 
 CREATE TABLE financeiro.tb_centro_custo (
     pk_nome_centro_custo VARCHAR(100) NOT NULL,
@@ -42,9 +42,9 @@ CREATE TABLE financeiro.tb_centro_custo (
         PRIMARY KEY (pk_nome_centro_custo),
 
     CONSTRAINT CK_tb_centro_custo_status_centro_custo
-        CHECK (status_centro_custo IN ('ativo', 'inativo'))
+        CHECK (status_centro_custo IN ('Ativo', 'Inativo'))
 );
-GO
+
 
 CREATE TABLE financeiro.tb_orcamento (
     pk_ano_exercicio INT NOT NULL,
@@ -60,10 +60,10 @@ CREATE TABLE financeiro.tb_orcamento (
         FOREIGN KEY (pk_nome_fonte)
         REFERENCES financeiro.tb_fontes_recurso (pk_nome_fonte)
 );
-GO
+
 
 CREATE TABLE financeiro.tb_orcamento_item (
-    pk_orcamento_item INT NOT NULL IDENTITY(1,1),
+    pk_orcamento_item INT NOT NULL AUTO_INCREMENT,
     fk_ano_exercicio INT NOT NULL,
     fk_nome_fonte VARCHAR(100) NOT NULL,
     fk_nome_categoria VARCHAR(100) NOT NULL,
@@ -89,10 +89,10 @@ CREATE TABLE financeiro.tb_orcamento_item (
         FOREIGN KEY (fk_nome_centro_custo)
         REFERENCES financeiro.tb_centro_custo (pk_nome_centro_custo)
 );
-GO
+
 
 CREATE TABLE financeiro.tb_receitas (
-    pk_receita INT NOT NULL IDENTITY(1,1),
+    pk_receita INT NOT NULL AUTO_INCREMENT,
     fk_nome_centro_custo VARCHAR(100) NULL,
     fk_nome_fonte VARCHAR(100) NOT NULL,
     descricao VARCHAR(255) NOT NULL,
@@ -114,7 +114,7 @@ CREATE TABLE financeiro.tb_receitas (
         FOREIGN KEY (fk_nome_fonte)
         REFERENCES financeiro.tb_fontes_recurso (pk_nome_fonte)
 );
-GO
+
 
 CREATE TABLE financeiro.tb_fornecedores (
     pk_documento_fornecedor VARCHAR(14) NOT NULL,
@@ -130,12 +130,12 @@ CREATE TABLE financeiro.tb_fornecedores (
         PRIMARY KEY (pk_documento_fornecedor),
 
     CONSTRAINT CK_tb_fornecedores_tipo_fornecedor
-        CHECK (tipo_fornecedor IN ('pessoa_fisica', 'pessoa_juridica')),
+        CHECK (tipo_fornecedor IN ('Pessoa Fisica', 'Pessoa Juridica')),
 
     CONSTRAINT CK_tb_fornecedores_status_fornecedor
-        CHECK (status_fornecedor IN ('ativo', 'inativo'))
+        CHECK (status_fornecedor IN ('Ativo', 'Inativo'))
 );
-GO
+
 
 CREATE TABLE financeiro.tb_contratos (
     pk_numero_contrato VARCHAR(50) NOT NULL,
@@ -163,10 +163,10 @@ CREATE TABLE financeiro.tb_contratos (
     CONSTRAINT CK_tb_contratos_situacao_contrato
         CHECK (situacao_contrato IN ('ativo', 'encerrado', 'suspenso', 'cancelado'))
 );
-GO
+
 
 CREATE TABLE financeiro.tb_despesas (
-    pk_despesa INT NOT NULL IDENTITY(1,1),
+    pk_despesa INT NOT NULL AUTO_INCREMENT,
     fk_nome_categoria VARCHAR(100) NOT NULL,
     fk_orcamento_item INT NULL,
     fk_nome_centro_custo VARCHAR(100) NOT NULL,
@@ -216,9 +216,9 @@ CREATE TABLE financeiro.tb_despesas (
         REFERENCES rh.tb_funcionario (pk_cpf),
 
     CONSTRAINT CK_tb_despesas_status_despesa
-        CHECK (status_despesa IN ('prevista', 'empenhada', 'paga', 'cancelada'))
+        CHECK (status_despesa IN ('Prevista', 'Empenhada', 'Paga', 'Cancelada'))
 );
-GO
+
 
 CREATE TABLE financeiro.tb_pagamentos (
     pk_numero_comprovante VARCHAR(50) NOT NULL,
@@ -235,4 +235,3 @@ CREATE TABLE financeiro.tb_pagamentos (
         FOREIGN KEY (fk_despesa)
         REFERENCES financeiro.tb_despesas (pk_despesa)
 );
-GO
