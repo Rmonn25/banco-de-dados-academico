@@ -1,6 +1,5 @@
 /* 
 Tabela base de pessoas.
-Armazena os dados principais e compartilhados de cada pessoa no sistema.
 */
 CREATE TABLE base.tb_pessoa (
 
@@ -32,7 +31,6 @@ CREATE TABLE base.tb_pessoa (
 
 /* 
 Tabela de endereços.
-Cada endereço pertence a uma pessoa cadastrada na tabela base.tb_pessoa.
 */
 CREATE TABLE base.tb_enderecos (
 
@@ -54,15 +52,17 @@ CREATE TABLE base.tb_enderecos (
     /* Relacionamento com a tabela de pessoas */
     CONSTRAINT FK_tb_enderecos_tb_pessoa
         FOREIGN KEY (fk_cpf)
-        REFERENCES base.tb_pessoa(pk_cpf)
+        REFERENCES base.tb_pessoa(pk_cpf),
 
+    /* Impede duplicidade do mesmo endereço para a mesma pessoa */
+    CONSTRAINT UQ_tb_enderecos
+        UNIQUE (fk_cpf, cep, logradouro, numero)
 );
-
 
 /* 
 Tabela de telefones.
-Armazena os telefones vinculados às pessoas cadastradas.
 */
+
 CREATE TABLE base.tb_telefones (
 
     /* Chave primária composta do telefone */
