@@ -1,92 +1,152 @@
-# SisGESC – Sistema de Gestão Escolar
+
+# SisGESC — Sistema de Gestão Escolar
+
+> Banco de dados relacional para gestão de escola pública de ensino fundamental, com visão analítica para **BI** e **Inteligência Artificial**.
+
+</div>
+
+## Sobre o Projeto
+
+O **SisGESC** é um projeto acadêmico desenvolvido na disciplina de **Banco de Dados**, por um grupo de 10 alunos. O objetivo é projetar e implementar um **Sistema de Gestão Escolar** completo para uma escola pública de bairro do ensino fundamental.
+
+O sistema centraliza informações **escolares, acadêmicas, administrativas e financeiras** em um banco de dados relacional estruturado, com base preparada para análises avançadas via **BI** e **IA/ML**.
+
+### O que o sistema gerencia?
+
+| Domínio | Dados Cobertos |
+|---|---|
+|  **Acadêmico** | Alunos, turmas, disciplinas, matrículas, notas |
+|  **Frequência** | Presença, faltas, histórico por aluno e turma |
+|  **Responsáveis** | Vínculos familiares, contatos, comunicação |
+|  **Administrativo** | Funcionários, cargos, lotação |
+|  **Financeiro** | Taxas, pagamentos, inadimplência |
+
+---
+
+## Problema Resolvido
+
+Muitas escolas públicas ainda enfrentam dificuldades para centralizar e analisar informações críticas. Sem uma base bem estruturada, torna-se difícil:
+
+- Acompanhar o desempenho escolar com eficiência
+- Identificar alunos em risco de evasão precocemente
+- Gerar relatórios e indicadores confiáveis
+- Apoiar a tomada de decisão da gestão escolar
+
+O **SisGESC** resolve isso propondo um banco de dados relacional capaz de sustentar tanto as **operações do dia a dia** quanto **análises educacionais avançadas** no futuro.
+
+---
+
+## Modelagem do Banco
+
+O diagrama abaixo representa o modelo lógico (ER) do sistema:
+
+[![Modelagem do Banco Acadêmico](./modelagem/Banco%20academico.png)](https://dbdiagram.io/d/Banco-academico-69e236f7a5db712fe57b3376)
+
+> 🔗 Acesse o diagrama interativo completo em: [dbdiagram.io — SisGESC](https://dbdiagram.io/d/Banco-academico-69e236f7a5db712fe57b3376)
+
+---
+
+## Estrutura do Repositório
+
+```
+banco-de-dados-academico/
+│
+├── 📂 docs/              # Documentação do projeto
+│   └── 01_documentação_base.pdf  # Documentação completa com dicionarios e informações do banco de dados
+│
+├── 📂 modelagem/         # Diagrama ER e arquivos de modelagem
+│   └── Banco academico.png
+│
+├── 📂 sql/                 # Scripts SQL do projeto
+│   ├── 00_run_all.sql               # Script principal (executa tudo)
+│   ├── 01_select_count_tables/      # Executa um Count(*) em todas as tabelas do banco
+│   ├── 02_create_olap/              # Estrutura analítica (OLAP)
+│   ├── 03_selects_and_subselects/   # selects e subselects testes
+│   └── 99_reset_script/             # reseta todos os dados do banco
+└── README.md
+```
+
+---
+
+## Como Executar
+
+### Pré-requisitos
+
+- **MySQL* 
+
+### Passo a passo
+
+**1. Clone o repositório**
+
+```bash
+git clone https://github.com/Rmonn25/banco-de-dados-academico.git
+cd banco-de-dados-academico
+```
+
+**2. Acesse a pasta SQL**
+
+```
+sql/
+```
+
+**3. Execute os scripts na ordem correta**
+
+```
+1️  00_run_all.sql       → Execução inicial e estruturas das tabelas e as cargas inicias
+2  Scripts OLAP         → Camada analítica
+```
+
+> **Importante:** Execute sempre respeitando a ordem numérica dos arquivos para garantir a integridade referencial entre as tabelas.
+
+---
+
+## Estrutura OLAP
+
+A camada OLAP foi projetada para suportar análises gerenciais e indicadores educacionais, servindo de base para dashboards e BI. Os principais eixos de análise são:
+
+- Desempenho dos alunos por turma e disciplina
+- Frequência e assiduidade escolar
+- Monitoramento de risco de evasão
+- Indicadores educacionais gerais
+- Análise histórica por período letivo
+
+---
+
+## Visão Futura
+
+O projeto foi modelado pensando em escalabilidade. Entre as possibilidades futuras:
+
+
+- Dashboards e relatórios gerenciais (BI)
+- Modelos de Machine Learning para prever evasão escolar
+- API para consumo dos dados por aplicações externas
+- Interface web/mobile integrada ao banco
+- Sistema de alertas para gestores (frequência crítica, notas baixas)
+
+
+---
 
 ## Integrantes
 
-- [Ramon Oliveira](https://github.com/Rmonn25)
-- [Gustavo Vaz](https://github.com/Gustavo-Vaz-Gasparoto)
-- [Igor Sant'ana](https://github.com/IgorMedeiros-cpu)
-- [Douglas Leal](https://github.com/douglaslealgzs)
-- [Gabriel Luiz](https://github.com/GabrielBorges1234)
-- [Vitor Santana](https://github.com/vitorsfz)
-- [Luigi Borges](https://github.com/Luigi-Loc)
-- [Miguel Alves](https://github.com/Miguel-Lima26)
-- [Edson Murilo](https://github.com/Muriloss21)
-- [Daniel Perederko](https://github.com/perederko90000)
+Projeto desenvolvido por 10 alunos na disciplina de **Banco de Dados**:
 
-## Sobre o projeto
+| | Nome | GitHub |
+|---|---|---|
+| 1 | Ramon Oliveira | [@Rmonn25](https://github.com/Rmonn25) |
+| 2 | Gustavo Vaz | [@Gustavo-Vaz-Gasparoto](https://github.com/Gustavo-Vaz-Gasparoto) |
+| 3 | Igor Sant'ana | [@IgorMedeiros-cpu](https://github.com/IgorMedeiros-cpu) |
+| 4 | Douglas Leal | [@douglaslealgzs](https://github.com/douglaslealgzs) |
+| 5 | Gabriel Luiz | [@GabrielBorges1234](https://github.com/GabrielBorges1234) |
+| 6 | Vitor Santana | [@vitorsfz](https://github.com/vitorsfz) |
+| 7 | Luigi Borges | [@Luigi-Loc](https://github.com/Luigi-Loc) |
+| 8 | Miguel Alves | [@Miguel-Lima26](https://github.com/Miguel-Lima26) |
+| 9 | Edson Murilo | [@Muriloss21](https://github.com/Muriloss21) |
+| 10 | Daniel Perederko | [@perederko90000](https://github.com/perederko90000) |
 
-O **SisGESC** é um projeto acadêmico desenvolvido na disciplina de **Banco de Dados** por um grupo de 10 alunos da faculdade, com o objetivo de projetar e estruturar um **Sistema de Gestão Escolar** voltado ao armazenamento, organização e análise de dados de uma **escola pública de bairro do ensino fundamental**.
+---
 
-A proposta do sistema é centralizar informações escolares, acadêmicas, administrativas e financeiras em um banco de dados estruturado, oferecendo suporte às operações do dia a dia da instituição e, ao mesmo tempo, preparando a base para futuras aplicações em **Business Intelligence (BI)** e **Inteligência Artificial (IA)**.
+<div align="center">
 
-Link do diagrama: [Diagrama - SisGESC](https://dbdiagram.io/d/Banco-academico-69e236f7a5db712fe57b3376)
+Projeto acadêmico — Disciplina de Banco de Dados · 2025
 
-![Modelagem do Banco Acadêmico](modelagem/Banco%20academico.png)
-
-## Contexto do trabalho
-
-Este trabalho tem como foco principal a construção da base de dados do sistema, considerando não apenas o uso transacional, mas também seu potencial analítico e preditivo no futuro.
-
-A ideia é que o banco de dados seja modelado de forma que possa, futuramente, apoiar:
-
-- análises gerenciais por meio de **BI**;
-- geração de indicadores educacionais;
-- identificação de padrões no comportamento escolar;
-- aplicação de modelos de **Machine Learning** para prever a probabilidade de um aluno **evadir a escola**.
-
-## Problema que o projeto busca resolver
-
-Muitas escolas públicas ainda enfrentam dificuldades para centralizar, organizar e analisar informações importantes sobre alunos, turmas, desempenho acadêmico, frequência, responsáveis, funcionários e recursos administrativos.
-
-Sem uma base de dados bem estruturada, torna-se mais difícil:
-
-- acompanhar o desempenho escolar de forma eficiente;
-- identificar sinais de risco de evasão;
-- gerar relatórios e indicadores confiáveis;
-- apoiar a tomada de decisão por parte da gestão escolar.
-
-Diante disso, o projeto **SisGESC** propõe a modelagem de um banco de dados relacional capaz de sustentar tanto as operações escolares quanto futuras análises mais avançadas.
-
-## Objetivo geral
-
-Desenvolver a estrutura inicial de um sistema de gestão escolar para uma escola pública de ensino fundamental, com foco na modelagem de um banco de dados transacional preparado para futuras aplicações em **BI** e **IA**.
-
-## Objetivos específicos
-
-- modelar o banco de dados da escola de forma organizada e consistente;
-- estruturar tabelas e relacionamentos que representem alunos, responsáveis, turmas, disciplinas, matrículas, notas, frequência, funcionários e área financeira;
-- criar uma base de dados que permita consultas operacionais e analíticas;
-- preparar a estrutura para uso futuro em dashboards, relatórios e mineração de dados;
-- possibilitar, futuramente, o treinamento de modelos de **IA/ML** para prever chances de evasão escolar.
-
-## Escopo desta etapa
-
-Nesta etapa do projeto, estão sendo desenvolvidos os seguintes artefatos:
-
-- **Repositório Git** com histórico de desenvolvimento;
-- **Documento de Requisitos** com a contextualização e definição do problema;
-- **Dicionário de Dados** com campos, tipos e restrições;
-- **Diagrama ER Transacional** representando o modelo lógico;
-- **Script SQL** com os comandos iniciais para criação da base de dados.
-
-## Visão futura do projeto
-
-Além de atender às necessidades operacionais da escola, o projeto foi idealizado para que, no futuro, a base de dados possa apoiar análises educacionais mais avançadas.
-
-Entre as possibilidades futuras, destacam-se:
-
-- acompanhamento do desempenho dos alunos por turma e disciplina;
-- análise de frequência e comportamento escolar;
-- identificação de alunos com maior risco de evasão;
-- construção de dashboards e relatórios gerenciais;
-- uso de técnicas de **Machine Learning** e **Inteligência Artificial** aplicadas ao contexto educacional.
-
-## Natureza do projeto
-
-Este projeto possui caráter acadêmico e educacional, sendo desenvolvido com o objetivo de aplicar, na prática, conceitos de:
-
-- modelagem de banco de dados;
-- documentação de requisitos;
-- estruturação de sistemas de informação;
-- organização de dados para análise;
-- preparação de bases para **BI** e **IA**.
+</div>
