@@ -11,16 +11,6 @@ O **SisGESC** é um projeto acadêmico desenvolvido na disciplina de **Banco de 
 
 O sistema centraliza informações **escolares, acadêmicas, administrativas e financeiras** em um banco de dados relacional estruturado, com base preparada para análises avançadas via **BI** e **IA/ML**.
 
-### O que o sistema gerencia?
-
-| Domínio | Dados Cobertos |
-|---|---|
-|  **Acadêmico** | Alunos, turmas, disciplinas, matrículas, notas |
-|  **Frequência** | Presença, faltas, histórico por aluno e turma |
-|  **Responsáveis** | Vínculos familiares, contatos, comunicação |
-|  **Administrativo** | Funcionários, cargos, lotação |
-|  **Financeiro** | Taxas, pagamentos, inadimplência |
-
 ---
 
 ## Problema Resolvido
