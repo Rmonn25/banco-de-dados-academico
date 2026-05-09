@@ -72,7 +72,7 @@ banco-de-dados-academico/
 
 ### Pré-requisitos
 
-- **MySQL* 
+- **MySQL** 
 
 ### Passo a passo
 
@@ -93,7 +93,7 @@ sql/
 
 ```
 1️  00_run_all.sql       → Execução inicial e estruturas das tabelas e as cargas inicias
-2  Scripts OLAP         → Camada analítica
+2  02_create_olap       → Camada analítica
 ```
 
 > **Importante:** Execute sempre respeitando a ordem numérica dos arquivos para garantir a integridade referencial entre as tabelas.
